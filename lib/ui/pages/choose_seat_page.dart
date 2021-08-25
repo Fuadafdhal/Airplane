@@ -1,5 +1,8 @@
 import 'package:airplan/models/destination_model.dart';
+import 'package:airplan/models/transaction_model.dart';
 import 'package:airplan/shared/theme.dart';
+import 'package:airplan/ui/pages/checkout_page.dart';
+import 'package:airplan/ui/widgets/custom_button.dart';
 import 'package:airplan/ui/widgets/seat_item.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -345,6 +348,13 @@ class ChooseSeatPage extends StatelessWidget {
                       fontWeight: light,
                     ),
                   ),
+                  Text(
+                    'A3,B3',
+                    style: blackTextStyle.copyWith(
+                      fontSize: 16,
+                      fontWeight: medium,
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -377,7 +387,31 @@ class ChooseSeatPage extends StatelessWidget {
     }
 
     Widget checkoutButton() {
-      return Container();
+      return CustomButton(
+        title: 'Continue to Checkout',
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => CheckoutPage(
+                      TransactionModel(
+                        destination: destination,
+                        amountOfTraveler: 1,
+                        selectedSeats: 'A1',
+                        insurance: true,
+                        refundable: false,
+                        vat: 0.45,
+                        price: 2500000,
+                        grandTotal: 2500000,
+                      ),
+                    )),
+          );
+        },
+        margin: EdgeInsets.only(
+          top: 30,
+          bottom: 46,
+        ),
+      );
     }
 
     return Scaffold(
