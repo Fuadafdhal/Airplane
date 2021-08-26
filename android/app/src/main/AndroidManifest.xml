@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.afdhal_fa.airplane">
    <application
-        android:label="airplan"
+        android:label="Airplane"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
