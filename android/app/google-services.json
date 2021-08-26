@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "298948942012",
+    "project_id": "airplane-bwa",
+    "storage_bucket": "airplane-bwa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:298948942012:android:0aa875f840d74ff536d8b9",
+        "android_client_info": {
+          "package_name": "com.afdhal_fa.airplane"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "298948942012-olfageuiu7kq3mcrsg7hv7ueul7h4hj3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKqltJkLol20-oPPppCNSixyyBTphX5jU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "298948942012-olfageuiu7kq3mcrsg7hv7ueul7h4hj3.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "298948942012-n1m6uaffg6h8b7i51pl7tghn4dtrmgjs.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.airplan"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

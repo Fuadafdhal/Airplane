@@ -1,4 +1,6 @@
-class DestinationModel {
+import 'package:equatable/equatable.dart';
+
+class DestinationModel extends Equatable {
   final String id;
   final String name;
   final String city;
@@ -33,4 +35,7 @@ class DestinationModel {
         'rating': rating,
         'price': price,
       };
+
+  @override
+  List<Object?> get props => [id, name, city, imageUrl, rating, price];
 }

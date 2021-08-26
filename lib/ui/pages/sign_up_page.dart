@@ -1,8 +1,10 @@
+import 'package:airplan/cubit/auth_cubit.dart';
 import 'package:airplan/shared/theme.dart';
 import 'package:airplan/ui/widgets/custom_button.dart';
 import 'package:airplan/ui/widgets/custom_text_form_field.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SignUpPage extends StatelessWidget {
   SignUpPage({Key? key}) : super(key: key);
@@ -63,10 +65,35 @@ class SignUpPage extends StatelessWidget {
       }
 
       Widget submitButton() {
-        return CustomButton(
-          title: 'Get Started',
-          onPressed: () {
-            Navigator.pushNamed(context, '/bonus');
+        return BlocConsumer<AuthCubit, AuthState>(
+          listener: (context, state) {
+            if (state is AuthSuccess) {
+              Navigator.pushNamedAndRemoveUntil(
+                  context, '/bonus', (route) => false);
+            } else if (state is AuthFailed) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(state.error),
+                  backgroundColor: kRedColor,
+                ),
+              );
+            }
+          },
+          builder: (context, state) {
+            if (state is AuthLoading) {
+              return Center(child: CircularProgressIndicator());
+            }
+
+            return CustomButton(
+              title: 'Get Started',
+              onPressed: () {
+                context.read<AuthCubit>().signUp(
+                    email: emailController.text,
+                    password: passwordController.text,
+                    name: nameController.text,
+                    hobby: hobbyController.text);
+              },
+            );
           },
         );
       }
