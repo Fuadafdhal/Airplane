@@ -1,22 +1,24 @@
+import 'package:airplan/cubit/seat_cubit.dart';
 import 'package:airplan/shared/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SeatItem extends StatelessWidget {
   // NOTE: 0. Available 1. Selected 2. Unavailable
 
   final String id;
   final bool isAvailable;
-  final bool isSelected;
 
   const SeatItem({
     Key? key,
     required this.id,
     this.isAvailable = true,
-    this.isSelected = false,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    bool isSelected = context.watch<SeatCubit>().isSelected(id);
+
     backgroundColor() {
       if (!isAvailable) {
         return kUnavailableColor;
@@ -53,7 +55,11 @@ class SeatItem extends StatelessWidget {
     }
 
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        if (isAvailable) {
+          context.read<SeatCubit>().selectSeat(id);
+        }
+      },
       child: Container(
         width: 48,
         height: 48,
