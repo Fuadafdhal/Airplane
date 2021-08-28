@@ -2,6 +2,7 @@ import 'package:airplan/cubit/auth_cubit.dart';
 import 'package:airplan/cubit/destination_cubit.dart';
 import 'package:airplan/cubit/page_cubit.dart';
 import 'package:airplan/cubit/seat_cubit.dart';
+import 'package:airplan/cubit/transaction_cubit.dart';
 import 'package:airplan/ui/pages/bonus_page.dart';
 import 'package:airplan/ui/pages/get_started_page.dart';
 import 'package:airplan/ui/pages/home_page.dart';
@@ -37,6 +38,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => SeatCubit(),
+        ),
+        BlocProvider(
+          create: (context) => TransactionCubit(),
         ),
       ],
       child: MaterialApp(
