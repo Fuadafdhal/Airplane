@@ -39,7 +39,7 @@ class DestinationTile extends StatelessWidget {
                 borderRadius: BorderRadius.circular(18),
                 image: DecorationImage(
                   fit: BoxFit.cover,
-                  image: AssetImage(
+                  image: NetworkImage(
                     destination.imageUrl,
                   ),
                 ),

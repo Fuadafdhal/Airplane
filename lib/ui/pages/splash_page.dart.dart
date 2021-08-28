@@ -1,8 +1,10 @@
 import 'dart:async';
+import 'package:airplan/cubit/auth_cubit.dart';
 import 'package:airplan/shared/theme.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({Key? key}) : super(key: key);
@@ -22,6 +24,7 @@ class _SplashPageState extends State<SplashPage> {
             context, '/get-started', (route) => false);
       } else {
         Navigator.pushNamedAndRemoveUntil(context, '/main', (route) => false);
+        context.read<AuthCubit>().getCurrentUser(user.uid);
       }
     });
     super.initState();

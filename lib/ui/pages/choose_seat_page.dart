@@ -6,6 +6,7 @@ import 'package:airplan/ui/widgets/custom_button.dart';
 import 'package:airplan/ui/widgets/seat_item.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class ChooseSeatPage extends StatelessWidget {
   final DestinationModel destination;
@@ -277,6 +278,7 @@ class ChooseSeatPage extends StatelessWidget {
                 children: [
                   SeatItem(
                     id: 'A4',
+                    isSelected: true,
                   ),
                   SeatItem(
                     id: 'B4',
@@ -372,7 +374,9 @@ class ChooseSeatPage extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    'IDR 2.500.000',
+                    NumberFormat.currency(
+                            locale: 'id', symbol: 'IDR ', decimalDigits: 0)
+                        .format(destination.price),
                     style: purpleTextStyle.copyWith(
                       fontSize: 16,
                       fontWeight: semiBold,
